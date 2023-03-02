@@ -44,15 +44,17 @@ export default function CustomButton({ options, colorScheme, active, text, setSe
   }
 
   function handleBlur(event) {
+    console.log("blur event")
     if (!listPointer.current.contains(event.relatedTarget) || event.relatedTarget === null ||
         (event.relatedTarget == buttonPointer.current && dropdownOpen)) {
       setDropdownOpen(false)
     }
   }
 
-  function handleButtonClick() {
+  function handleButtonClick(event) {
+    console.log(event.relatedTarget)
     buttonPointer.current.focus()
-    active && setDropdownOpen(x => !x)
+    active && setDropdownOpen(x => !x) 
   }
 
   function handleOptionSelection(option) {
@@ -79,6 +81,7 @@ export default function CustomButton({ options, colorScheme, active, text, setSe
     <div className="buttonWrapper">
       <button
         onBlur={handleBlur}
+        onMouseDown={(e) => e.preventDefault()}
         className={`dropButton 
                         ${colorScheme}
                         ${dropdownOpen ? "dropdownOpen" : ""}
