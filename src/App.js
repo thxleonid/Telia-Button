@@ -106,7 +106,7 @@ export default function App() {
         <CustomButton 
           tabIndex={1}
           active={true}
-          text={"Enabled button"}
+          text={"Erinevad toimingud"}
           options={buttonOptions}
           colorScheme={colorScheme}
           setSelectedItem={setSelectedItem}
@@ -124,7 +124,7 @@ export default function App() {
         <CustomButton 
           tabIndex={1}
           active={true}
-          text={"Enabled button"}
+          text={"Erinevad toimingud"}
           options={buttonOptions}
           colorScheme={colorScheme}
           setSelectedItem={setSelectedItem}
@@ -134,7 +134,7 @@ export default function App() {
         <CustomButton 
           tabIndex={1}
           active={true}
-          text={"Enabled button"}
+          text={"Erinevad toimingud"}
           options={buttonOptions}
           colorScheme={colorScheme}
           setSelectedItem={setSelectedItem}
@@ -143,7 +143,7 @@ export default function App() {
         <CustomButton 
           tabIndex={1}
           active={true}
-          text={"Enabled button"}
+          text={"Erinevad toimingud"}
           options={buttonOptions}
           colorScheme={colorScheme}
           setSelectedItem={setSelectedItem}
