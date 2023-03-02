@@ -10,6 +10,7 @@
 
 body {
   margin: 10px;
+  width: 100vw;
   background: #f0efef;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -49,7 +50,8 @@ code {
   position: absolute;
   /*display:flex;*/
   justify-content: space-between;
-
+  display: flex;
+  flex-wrap:wrap;
   width:95%;
 }
 
