@@ -1,10 +1,10 @@
 import React from "react"
 import CustomButton from "./components/Button"
-import teliaLogo from "./img/logos/telia logo.png"
 export default function App() {
 
   const [colorScheme, setColorScheme] = React.useState("telia")
-  
+  const [selectedItem, setSelectedItem] = React.useState("")
+
   const buttonOptions = [
     {
       value: "First option",
@@ -32,7 +32,8 @@ export default function App() {
       support: false,
       icon: {
         align: "left",
-        url: "./img/icon.png"
+        url: "./img/icon.png",
+        alt: "weather icon"
       }
     },
     {
@@ -41,37 +42,84 @@ export default function App() {
       support: false,
       icon: {
         align: "right",
-        url: "./img/icon.png"
+        url: "./img/icon.png",
+        alt: "weather icon"
       }
     },
     {
-      value: "7th option, Customer support",
+      icon: {
+        align: "right",
+        url: "./img/icon.png",
+        alt: "weather icon"
+      }
+    },
+    {
+      value: "8th option, Customer support",
       active: true,
       support: true
     },
     {
-      value: "8th option, Customer support",
+      value: "9th option, Customer support",
       active: true,
       support: true
     }
   ]
     
   function changeColor(event) {
-    setColorScheme(event.target.value)
-    console.log(event)
+    
+    
+    const scheme = event.target.attributes.getNamedItem('data-value').value
+    setColorScheme(scheme)
   }
   
 
   return (
     <div className="App">
         <h2>Select color scheme if needed</h2>
-        <button onClick={changeColor} value="telia">Telia</button>
-        <img value="telia" src={teliaLogo} onClick={changeColor} />
-        <button onClick={changeColor} value="elisa">Elisa</button>
-        <button onClick={changeColor} value="tele2">Tele2</button>
+        <img 
+          src={"./img/logos/telia logo.png"} onClick={changeColor} data-value="telia" tabIndex={1} alt="Telia brand logo"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              changeColor(e)
+            }
+          }}/>
+        <img 
+          src={"./img/logos/elisa logo.png"} onClick={changeColor} data-value="elisa" tabIndex={1} alt="Elisa brand logo"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              changeColor(e)
+            }
+          }}/>
+        <img 
+          src={"./img/logos/tele2 logo.png"} onClick={changeColor} data-value="tele2" tabIndex={1} alt="Tele2 brand logo"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              changeColor(e)
+            }
+          }}/>
 
         <h2>Current scheme applied: {colorScheme}</h2>
+        <h2>Selected option: {selectedItem}</h2>
+        <hr></hr>
+        
+        <div className="multipleButtonsBlock-topRow">
+        <CustomButton 
+          tabIndex={1}
+          active={true}
+          text={"Enabled button"}
+          options={buttonOptions}
+          colorScheme={colorScheme}
+          setSelectedItem={setSelectedItem}
+          />    
 
+        <CustomButton 
+          tabIndex={1}
+          active={false}
+          text={"Disabled button"}
+          options={buttonOptions}
+          colorScheme={colorScheme}
+          setSelectedItem={setSelectedItem}
+          />   
 
         <CustomButton 
           tabIndex={1}
@@ -79,15 +127,29 @@ export default function App() {
           text={"Enabled button"}
           options={buttonOptions}
           colorScheme={colorScheme}
+          setSelectedItem={setSelectedItem}
           />
-
+        </div>
+        <div className="multipleButtonsBlock-bottomRow">
         <CustomButton 
-          tabIndex={0}
-          active={false}
-          text={"Disabled button"}
+          tabIndex={1}
+          active={true}
+          text={"Enabled button"}
           options={buttonOptions}
           colorScheme={colorScheme}
+          setSelectedItem={setSelectedItem}
+          />    
+
+        <CustomButton 
+          tabIndex={1}
+          active={true}
+          text={"Enabled button"}
+          options={buttonOptions}
+          colorScheme={colorScheme}
+          setSelectedItem={setSelectedItem}
           />
+        </div>
+        
     </div>
   );
 }

@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+
 body {
-  margin: 0;
+  margin: 10px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,61 +14,227 @@ code {
     monospace;
 }
 
-/* dropdown styling */
+.App > img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.arrowIcon {
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  vertical-align: center;
+}
+
+
+.multipleButtonsBlock-topRow {
+  display:flex;
+  justify-content: space-between;
+}
+
+.multipleButtonsBlock-bottomRow {
+  bottom: 10px;
+  position: absolute;
+  display:flex;
+  justify-content: space-between;
+
+  width:95%;
+}
+
+/* MAIN dropdown styling */
+
+.buttonBlock {  
+  /*display: inline-block;  */
+  position: relative;
+  margin: 10px;
+}
 
 /* button styling */
 
 .dropbtn {  
-  background-color: grey;
-  padding: 10px;  
-  font-size: 12px;  
+  padding: 10px 18px 10px 23px;  
+  font-size: 16px;  
+  
+
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 200px;
 }  
 
-.dropbtn--enabled:focus + .dropdown-content {
-  display: block;
+
+.dropbtn--enabled.dropdownOpen .arrowIcon {
+  margin-left: 10px;
+  margin-right: 0px;
 }
 
-/* telia style */
+.dropbtn--enabled:hover .arrowIcon {
+  margin-left: 10px;
+  margin-right: 0px;
+  transition: margin 100ms;
+}
+
+/* STYLE: telia */
 .dropbtn.telia {
   color: white;  
+  border-radius: 24px;
 }
 
 .dropbtn--disabled.telia {
   background-color: #CD9FEF;  
+  cursor: not-allowed;
 }
 
 .dropbtn--enabled.telia {
-  background-color: #8A1FD8
+  background-color: #8A1FD8;
+  cursor: pointer;
 }
 
-.dropbtn--enabled.telia:focus {
+.dropbtn--enabled.dropdownOpen.telia {
   background: #6F17AC
 }
 
+.option--active > .option--regular.telia {  
+  color: black;  
+}  
+
+.option--active > .option--regular.telia:hover {  
+  color: #932DDD; 
+}  
+
+.option--active > .option--support.telia {  
+  color: #CE68C5; 
+}  
+
+.option--active > .option--support.telia:hover {  
+  color: #EB56D0; 
+}  
+
+
+/* STYLE: elisa */
+.dropbtn.elisa {
+  color: white;  
+}
+
+.dropbtn--disabled.elisa {
+  background-color: #8399AE;  
+  cursor: not-allowed;
+}
+
+.dropbtn--enabled.elisa {
+  background-color: #0618A8;
+  cursor: pointer;
+}
+
+.dropbtn--enabled.dropdownOpen.elisa {
+  background: #04127c
+}
+
+.option--active > .option--regular.elisa {  
+  color: black;  
+}  
+
+.option--active > .option--regular.elisa:hover {  
+  color: #0618A8; 
+}  
+
+.option--active > .option--support.elisa {  
+  color: #ED6E2D; 
+}  
+
+.option--active > .option--support.elisa:hover {  
+  color: #b35323; 
+}  
+
+
+/* STYLE: tele2 */
+.dropbtn.tele2 {
+  color: white;  
+}
+
+.dropbtn--disabled.tele2 {
+  background-color: #6d737e;  
+  cursor: not-allowed;
+}
+
+.dropbtn--enabled.tele2 {
+  background-color: #2D3139;
+  cursor: pointer;
+}
+
+.dropbtn--enabled.dropdownOpen.tele2 {
+  background: #191c20
+}
+
+.option--active > .option--regular.tele2 {  
+  color: black;  
+}  
+
+.option--active > .option--regular.tele2:hover {  
+  color: #2b94cd; 
+}  
+
+.option--active > .option--support.tele2 {  
+  color: #EC65A1; 
+}  
+
+.option--active > .option--support.tele2:hover {  
+  color: #b14a78; 
+}  
 
 
 /* elements styling */
-.dropdown {  
-  display: inline-block;  
-  position: relative  
-}  
+.optionElement + hr {
+  margin: 0 15px;
+
+  border: none;
+  height: 1px;
+    /* Set the hr color */
+  color: #F6F6F6; /* old IE */
+  background-color: #F6F6F6;
+}
+
+
+
 .dropdown-content {  
+  display: block;
   position: absolute;  
+  max-height: 400px;
+  overflow-y: scroll;
+
   background-color: white;  
-  min-width: 200px;  
-  display: none;  
+  min-width: 300px;  
+  /*display: none;  */
+  
   z-index: 1;  
   cursor: pointer;
 
+  box-shadow: 1px 1px 5px grey;
 }  
-.dropdown-content div {  
-  color: black;  
+.optionElement {  
   padding: 12px 16px;  
   text-decoration: none;  
-  display: block;  
-}  
-.dropdown-content div:hover {  
-  background-color: lightgrey; 
+  display: flex;  
+  gap: 3px;
+  margin: 0;
+
+  font-size: 13px;
 }  
 
+.option--disabled {
+  color: #B5B5B5;
+  cursor: not-allowed;
+}
 
+.option--active:hover {  
+  background-color: #F6F6F6; 
+}  
+
+.optionIcon {
+  height: 13px;
+  object-fit: cover;
+}
