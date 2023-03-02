@@ -44,7 +44,8 @@ export default function CustomButton({ options, colorScheme, active, text, setSe
   }
 
   function handleBlur(event) {
-    if (!listPointer.current.contains(event.relatedTarget) || event.relatedTarget === null) {
+    if (!listPointer.current.contains(event.relatedTarget) || event.relatedTarget === null ||
+        (event.relatedTarget == buttonPointer.current && dropdownOpen)) {
       setDropdownOpen(false)
     }
   }
