@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@400;500&&display=swap');
 
 @media all and (max-height: 440px) {
   .multipleButtonsBlock-bottomRow {display:none;}
@@ -10,7 +10,7 @@
 
 body {
   margin: 10px;
-  background: #e3e2e2;
+  background: #f0efef;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -32,16 +32,15 @@ code {
 
 .arrowIcon {
   height: 16px;
-  margin-left: 5px;
-  margin-right: 5px;
-  vertical-align: center;
+  margin-left: 0;
+  margin-right: 10px;
+  transition: margin 100ms;
 }
 
 
 .multipleButtonsBlock-topRow {
   display:flex;
   flex-wrap:wrap;
-  width: 100vw;
   justify-content: space-between;
 }
 
@@ -57,7 +56,6 @@ code {
 /* MAIN dropdown styling */
 
 .buttonWrapper {  
-  /*display: inline-block;  */
   position: relative;
   margin: 10px;
 }
@@ -65,19 +63,26 @@ code {
 /* button styling */
 
 .dropButton {  
-  padding: 10px 18px 10px 23px;  
-  font-size: 16px;  
+  padding: 15px 30px 15px 30px;
   border: none;
+  width: 240px;
 
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: .03rem;
+  font-size: 16px;  
+
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
 
-  max-width: 220px;
+  color: white;
 }  
 
+.dropButton--enabled {
+  cursor: pointer;
+}
 
 .dropButton--enabled.dropdownOpen .arrowIcon {
   margin-left: 10px;
@@ -92,18 +97,17 @@ code {
 
 /* STYLE: telia */
 .dropButton.telia {
-  color: white;  
   border-radius: 24px;
 }
 
 .dropButton--disabled.telia {
-  background-color: #CD9FEF; 
-  cursor: not-allowed;
+  /*background-color: #CD9FEF; */
+  background: #990AE3;
+  opacity: 0.4;
 }
 
 .dropButton--enabled.telia {
   background-color: #8A1FD8;
-  cursor: pointer;
 }
 
 .dropButton--enabled.dropdownOpen.telia {
@@ -112,7 +116,6 @@ code {
 
 .option--disabled.telia {
   color: #B5B5B5;
-  cursor: not-allowed;
 }
 
 .option--active.option--regular.telia {  
@@ -135,18 +138,15 @@ code {
 
 /* STYLE: telia WCAG */
 .dropButton.teliaWCAG {
-  color: white;  
   border-radius: 24px;
 }
 
 .dropButton--disabled.teliaWCAG {
   background-color: #7f6f8b;  
-  cursor: not-allowed;
 }
 
 .dropButton--enabled.teliaWCAG {
   background-color: #8A1FD8;
-  cursor: pointer;
 }
 
 .dropButton--enabled.dropdownOpen.teliaWCAG {
@@ -155,7 +155,6 @@ code {
 
 .option--disabled.teliaWCAG {
   color: #706b6b;
-  cursor: not-allowed;
 }
 
 .option--active.option--regular.teliaWCAG {  
@@ -178,18 +177,12 @@ code {
 
 
 /* STYLE: elisa */
-.dropButton.elisa {
-  color: white;  
-}
-
 .dropButton--disabled.elisa {
   background-color: #667685;  
-  cursor: not-allowed;
 }
 
 .dropButton--enabled.elisa {
   background-color: #0618A8;
-  cursor: pointer;
 }
 
 .dropButton--enabled.dropdownOpen.elisa {
@@ -198,7 +191,6 @@ code {
 
 .option--disabled.elisa {
   color: #6B6B6B;
-  cursor: not-allowed;
 }
 
 .option--active.option--regular.elisa {  
@@ -219,18 +211,12 @@ code {
 
 
 /* STYLE: tele2 */
-.dropButton.tele2 {
-  color: white;  
-}
-
 .dropButton--disabled.tele2 {
-  background-color: #6d737e;  
-  cursor: not-allowed;
+  background-color: #6d737e; 
 }
 
 .dropButton--enabled.tele2 {
   background-color: #2D3139;
-  cursor: pointer;
 }
 
 .dropButton--enabled.dropdownOpen.tele2 {
@@ -239,7 +225,6 @@ code {
 
 .option--disabled.tele2 {
   color: #6B6B6B;
-  cursor: not-allowed;
 }
 
 .option--active.option--regular.tele2 {  
@@ -266,12 +251,13 @@ code {
 
   background-color: white;  
   min-width: 300px;  
-  /*display: none;  */
   
   z-index: 1;  
   
+  
 
-  box-shadow: 1px 1px 5px grey;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }  
 
 .optionElementWrapper {  
@@ -279,15 +265,16 @@ code {
   padding: 0 16px;  
   
   font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: .03rem;
+  font-weight: 400;
   text-align: left;
   
-  border: none;
   
-  display: block;  
 }  
 
 .optionElementWrapper .optionElement {
-  padding: 12px 0;
+  padding: 9px 10px;
   display: flex;
   gap: 5px;
 }
@@ -297,10 +284,8 @@ code {
  }
 
  .optionElementWrapper:first-child > .optionElement{ 
-  padding: 13px 0;
+  padding: 10px 10px;
  }
-
-
 
 .option--active:hover + .optionElementWrapper .optionElement{  
   border-top: 1px solid white;
@@ -310,6 +295,10 @@ code {
   background-color: #F6F6F6; 
   cursor: pointer;
 }  
+
+.option--disabled:hover {
+  cursor: not-allowed;
+}
 
 .optionIcon {
   height: 13px;
