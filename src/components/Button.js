@@ -103,7 +103,7 @@ export default function CustomButton(props) {
                 {option.value && option.value}
                 {option.icon !== undefined && option.icon.align === "right" && <img className="optionIcon" src={option.icon.url} alt={option.icon.alt}/>}
             </div>
-            {index !== options.length - 1 && <hr></hr>}
+            {index !== options.length - 1 && <hr />}
         </div>
     )
 

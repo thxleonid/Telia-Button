@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
 
-@media all and (max-height: 390px) {
+@media all and (max-height: 440px) {
   .multipleButtonsBlock-bottomRow {display:none;}
 }
 
-@media all and (min-height: 390px) {
+@media all and (min-height: 440px) {
   .multipleButtonsBlock-bottomRow {display:flex;}
 }
 
