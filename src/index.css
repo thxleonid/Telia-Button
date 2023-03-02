@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
 
-@media all and (max-width: 479px) {
+@media all and (max-height: 390px) {
   .multipleButtonsBlock-bottomRow {display:none;}
+}
+
+@media all and (min-height: 390px) {
+  .multipleButtonsBlock-bottomRow {display:flex;}
 }
 
 body {
@@ -40,7 +44,7 @@ code {
 .multipleButtonsBlock-bottomRow {
   bottom: 10px;
   position: absolute;
-  display:flex;
+  /*display:flex;*/
   justify-content: space-between;
 
   width:95%;
