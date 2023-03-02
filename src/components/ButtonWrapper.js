@@ -51,9 +51,8 @@ export default function CustomButton({ options, colorScheme, active, text, setSe
     }
   }
 
-  function handleButtonClick(event) {
-    console.log(event.relatedTarget)
-    buttonPointer.current.focus()
+  function handleButtonClick() {
+    !dropdownOpen && buttonPointer.current.focus()
     active && setDropdownOpen(x => !x) 
   }
 
