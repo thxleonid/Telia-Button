@@ -82,7 +82,7 @@ export default function CustomButton({ options, colorScheme, active, text, setSe
         onMouseDown={(e) => e.preventDefault()}
         className={`dropButton 
                         ${colorScheme}
-                        ${dropdownOpen ? "dropdownOpen" : ""}
+                        ${dropdownOpen && "dropdownOpen"}
                         ${active ? "dropButton--enabled" : "dropButton--disabled"
           }`}
         ref={buttonPointer}
