@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@400;500&&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
 
 @media screen and (max-height: 440px),
        screen and  (max-width: 440px) {
@@ -56,17 +56,17 @@ code {
 
 /* MAIN dropdown styling */
 
-.buttonWrapper {  
+.wrapper {  
   position: relative;
   margin: 10px;
 }
 
 /* button styling */
 
-.dropButton {  
+.btn {  
   padding: 15px 30px 15px 30px;
   border: none;
-  width: 240px;
+  width: 250px;
 
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
@@ -81,96 +81,102 @@ code {
   color: white;
 }  
 
-.dropButton--enabled {
+.btn--enabled {
   cursor: pointer;
 }
 
-.dropButton--enabled.dropdownOpen .arrowIcon {
+.btn--disabled {
+  cursor: not-allowed;
+}
+
+
+
+.btn--dropdown-open .arrowIcon {
   margin-left: 10px;
   margin-right: 0px;
 }
 
-.dropButton--enabled:hover .arrowIcon {
+.btn--enabled:hover .arrowIcon {
   margin-left: 10px;
   margin-right: 0px;
   transition: margin 100ms;
 }
 
 /* STYLE: telia */
-.dropButton.telia {
+.telia .btn {
   border-radius: 24px;
 }
 
-.dropButton--disabled.telia {
+.telia .btn--disabled {
   /*background-color: #CD9FEF; */
   background: #990AE3;
   opacity: 0.4;
 }
 
-.dropButton--enabled.telia {
+.telia .btn--enabled {
   background-color: #8A1FD8;
 }
 
-.dropButton--enabled.dropdownOpen.telia {
+.telia .btn--dropdown-open {
   background: #6F17AC
 }
 
-.option--disabled.telia {
+.telia .option--disabled {
   color: #B5B5B5;
 }
 
-.option--active.option--regular.telia {  
+.telia .option--active.option--regular {  
   color: black;  
 }  
 
-.option--active.option--regular.telia:hover {  
+.telia .option--active.option--regular:hover {  
   color: #932DDD; 
 }  
 
-.option--active.option--support.telia {  
+.telia .option--active.option--support {  
   color: #CE68C5; 
 }  
 
-.option--active.option--support.telia:hover {  
+.telia .option--active.option--support:hover {  
   color: #EB56D0; 
 }  
 
  
 
 /* STYLE: telia WCAG */
-.dropButton.teliaWCAG {
+.teliaWCAG .btn {
   border-radius: 24px;
 }
 
-.dropButton--disabled.teliaWCAG {
+.teliaWCAG .btn--disabled {
   background-color: #7f6f8b;  
 }
 
-.dropButton--enabled.teliaWCAG {
+.teliaWCAG .btn--enabled {
   background-color: #8A1FD8;
 }
 
-.dropButton--enabled.dropdownOpen.teliaWCAG {
+.teliaWCAG .btn--dropdown-open {
   background: #6F17AC
 }
 
-.option--disabled.teliaWCAG {
+.teliaWCAG .option--disabled {
   color: #706b6b;
 }
 
-.option--active.option--regular.teliaWCAG {  
+.teliaWCAG .option--active.option--regular {  
   color: black;  
 }  
 
-.option--active.option--regular.teliaWCAG:hover {  
+.teliaWCAG .option--active.option--regular:hover {  
   color: #932DDD; 
 }  
 
-.option--active.option--support.teliaWCAG {  
+.teliaWCAG .option--active.option--support {  
   color: #b54aac;
 }  
 
-.option--active.option--support.teliaWCAG:hover {  
+.teliaWCAG .option--active.option--support:hover {  
   color: #7C0E66; 
 }  
 
@@ -178,80 +184,80 @@ code {
 
 
 /* STYLE: elisa */
-.dropButton--disabled.elisa {
+.elisa .btn--disabled {
   background-color: #667685;  
 }
 
-.dropButton--enabled.elisa {
+.elisa .btn--enabled {
   background-color: #0618A8;
 }
 
-.dropButton--enabled.dropdownOpen.elisa {
+.elisa .btn--dropdown-open {
   background: #04127c
 }
 
-.option--disabled.elisa {
+.elisa .option--disabled {
   color: #6B6B6B;
 }
 
-.option--active.option--regular.elisa {  
+.elisa .option--active.option--regular {  
   color: black;  
 }  
 
-.option--active.option--regular.elisa:hover {  
+.elisa .option--active.option--regular:hover {  
   color: #0618A8; 
 }  
 
-.option--active.option--support.elisa {  
+.elisa .option--active.option--support {  
   color: #BC4910; 
 }  
 
-.option--active.option--support.elisa:hover {  
+.elisa .option--active.option--support:hover {  
   color: #83340C; 
 }  
 
 
 /* STYLE: tele2 */
-.dropButton--disabled.tele2 {
+.tele2 .btn--disabled {
   background-color: #6d737e; 
 }
 
-.dropButton--enabled.tele2 {
+.tele2 .btn--enabled {
   background-color: #2D3139;
 }
 
-.dropButton--enabled.dropdownOpen.tele2 {
+.tele2 .btn--dropdown-open {
   background: #191c20
 }
 
-.option--disabled.tele2 {
+.tele2 .option--disabled {
   color: #6B6B6B;
 }
 
-.option--active.option--regular.tele2 {  
+.tele2 .option--active.option--regular {  
   color: black;  
 }  
 
-.option--active.option--regular.tele2:hover {  
+.tele2 .option--active.option--regular:hover {  
   color: #2b94cd; 
 }  
 
-.option--active.option--support.tele2 {  
+.tele2 .option--active.option--support {  
   color: #C81967; 
 }  
 
-.option--active.option--support.tele2:hover {  
+.tele2 .option--active.option--support:hover {  
   color: #6b2d49; 
 }  
 
-.dropdown-content {  
+.dropdown {  
   display: block;
   position: absolute;  
   max-height: 400px;
   overflow-y: scroll;
 
   background-color: white;  
-  min-width: 300px;  
+  min-width: 320px;  
   
   z-index: 1;  
   
@@ -261,7 +267,7 @@ code {
   border-radius: 3px;
 }  
 
-.optionElementWrapper {  
+.option {  
   background-color: white;
   padding: 0 16px;  
   
@@ -274,21 +280,21 @@ code {
   
 }  
 
-.optionElementWrapper .optionElement {
+.option__content {
   padding: 9px 10px;
   display: flex;
   gap: 5px;
 }
 
-.optionElementWrapper:not(:first-child) > .optionElement{ 
+.option:not(:first-child) > .option__content{ 
   border-top: 1px solid #F6F6F6;
  }
 
- .optionElementWrapper:first-child > .optionElement{ 
+ .option:first-child > .option__content{ 
   padding: 10px 10px;
  }
 
-.option--active:hover + .optionElementWrapper .optionElement{  
+.option--active:hover + .option .option__content{  
   border-top: 1px solid white;
 }  
 

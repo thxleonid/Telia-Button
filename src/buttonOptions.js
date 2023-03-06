@@ -58,4 +58,4 @@ const buttonOptions = [
     }
   ]
 
-export default buttonOptions
+export default buttonOptions;

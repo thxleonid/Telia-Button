@@ -1,16 +1,16 @@
-import React from "react"
-import ButtonWrapper from "./components/ButtonWrapper"
-import buttonOptions from "./buttonOptions"
-export default function App() {
+import buttonOptions from "./buttonOptions";
+import ButtonWrapper from "./components/ButtonWrapper";
+import React from "react";
 
-  const [colorScheme, setColorScheme] = React.useState("telia")
-  const [selectedItem, setSelectedItem] = React.useState("")
+const App = () => {
 
-  function changeColor(event) {
-    const scheme = event.target.attributes.getNamedItem('data-value').value
-    setColorScheme(scheme)
+  const [ colorScheme, setColorScheme ] = React.useState("telia");
+  const [ selectedItem, setSelectedItem ] = React.useState("");
+
+  const changeColor = (event) => {
+    const scheme = event.target.attributes.getNamedItem('data-value').value;
+    setColorScheme(scheme);
   }
-
 
   return (
     <div className="App">
@@ -94,3 +94,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

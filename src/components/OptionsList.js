@@ -1,13 +1,13 @@
-import React from "react"
-import OptionElement from "./OptionElement"
+import OptionElement from "./OptionElement";
+import React from "react";
 
-export default function OptionsList({ options, handleOptionSelection, colorScheme }) {
+const OptionsList = ({ options, handleOptionSelection }) => {
     return options.map((option, index) =>
         <OptionElement
             option={option}
             key={index}
             handleOptionSelection={handleOptionSelection}
-            colorScheme={colorScheme}
-        />)
-
+        />);
 }
+
+export default OptionsList;
