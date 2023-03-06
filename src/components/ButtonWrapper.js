@@ -87,7 +87,7 @@ const CustomButton = ({ options, colorScheme, active, text, setSelectedItem }) =
         ref={buttonPointer}
         onClick={handleButtonClick}
       >
-      {text}<img src={"./img/arrow.png"} className="arrowIcon" alt="Icon of arrow pointing right" /></button>
+      {text}<img src={"./img/arrow.png"} className="btn--icon" alt="Icon of arrow pointing right" /></button>
       {dropdownOpen &&
         <div className="dropdown" style={optionsListStyle} ref={listPointer} >
           <OptionsList

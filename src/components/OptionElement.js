@@ -16,9 +16,9 @@ const OptionElement = ({ option, handleOptionSelection }) => {
             }}
         >
             <div className={"option__content"}>
-                {icon !== undefined && icon.align === "left" && <img className="optionIcon" src={icon.url} alt={icon.alt} />}
+                {icon !== undefined && icon.align === "left" && <img className="option__content--icon" src={icon.url} alt={icon.alt} />}
                 {value && value}
-                {icon !== undefined && icon.align === "right" && <img className="optionIcon" src={icon.url} alt={icon.alt} />}
+                {icon !== undefined && icon.align === "right" && <img className="option__content--icon" src={icon.url} alt={icon.alt} />}
             </div>
         </div>
     );
