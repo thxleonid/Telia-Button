@@ -6,16 +6,12 @@ const OptionElement = ({ option, handleOptionSelection }) => {
         <div
             tabIndex="0"
             className={`option 
-                            ${active ? "option--active" : "option--disabled"}
-                            ${support ? "option--support" : "option--regular"}
-                        `}
-            onClick={() => {
-                handleOptionSelection(option)
-            }}
+                        ${active ? "option--active" : "option--disabled"}
+                        ${support ? "option--support" : "option--regular"}`}
+            onClick={() => { handleOptionSelection(option); }}
             onKeyDown={(e) => {
-                console.log(e.key)
                 if (e.key === "Enter" || e.key === " ") {
-                    handleOptionSelection(option)
+                    handleOptionSelection(option);
                 }
             }}
         >
