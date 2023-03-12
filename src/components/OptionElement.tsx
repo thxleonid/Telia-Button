@@ -13,13 +13,6 @@ const OptionElement = ({ option, handleOptionSelection }) => {
     )
     
     
-    
-    
-    //const optionElementClassName = classNames(
-    //    'option',
-    //    active ? 'option--active' : 'option--disabled',
-    //    support ? 'option--support' : 'option--regular'
-    //)
 
     return (
         <div
