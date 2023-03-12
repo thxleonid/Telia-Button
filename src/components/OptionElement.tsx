@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { OptionElementStates } from './enum.ts';
 
 
-
 const OptionElement = ({ option, handleOptionSelection }) => {
     
     const { active, support, icon, value } = option;
