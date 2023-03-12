@@ -1,4 +1,4 @@
-import OptionElement from "./OptionElement";
+import OptionElement from "./OptionElement.tsx";
 import React from "react";
 
 const OptionsList = ({ options, handleOptionSelection }) => {

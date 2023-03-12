@@ -80,14 +80,14 @@ const CustomButton = ({ options, colorScheme, active, text, setSelectedItem }) =
       <button
         onBlur={handleBlur}
         onMouseDown={(e) => e.preventDefault()}
-        className={`btn 
-                    ${ dropdownOpen && "btn--dropdown-open" }
-                    ${ active ? "btn--enabled" : "btn--disabled" }`
-                  }
+        className={['btn',
+                  dropdownOpen && "btn--dropdown-open",
+                  active ? "btn--enabled" : "btn--disabled"]
+                  .filter(Boolean).join(' ')}
         ref={buttonPointer}
         onClick={handleButtonClick}
       >
-      {text}<img src={"./img/arrow.png"} className="btn--icon" alt="Icon of arrow pointing right" /></button>
+      {text}<img src={"./img/arrow.png"} className="btn__icon" alt="Icon of arrow pointing right" /></button>
       {dropdownOpen &&
         <div className="dropdown" style={optionsListStyle} ref={listPointer} >
           <OptionsList

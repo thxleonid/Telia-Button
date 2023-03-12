@@ -32,7 +32,7 @@ code {
   margin: 5px;
 }
 
-.btn--icon {
+.btn__icon {
   height: 16px;
   margin-left: 0;
   margin-right: 10px;
@@ -91,12 +91,12 @@ code {
 
 
 
-.btn--dropdown-open .btn--icon {
+.btn--dropdown-open .btn__icon {
   margin-left: 10px;
   margin-right: 0px;
 }
 
-.btn--enabled:hover .btn--icon {
+.btn--enabled:hover .btn__icon {
   margin-left: 10px;
   margin-right: 0px;
   transition: margin 100ms;
@@ -307,7 +307,7 @@ code {
   cursor: not-allowed;
 }
 
-.option__content--icon {
+.option__icon {
   height: 13px;
   object-fit: cover;
 }
