@@ -1,8 +1,9 @@
-import React from "react";
-import classNames from 'classnames';
-import { OptionElementStates } from './enum.ts';
+import classNames from 'classnames'
+import { OptionElementStates, IconAlign } from '../enum'
+import { OptionParams } from '../types'
 
-const OptionElement = ({ option, handleOptionSelection }) => {
+const OptionElement: 
+    React.FunctionComponent<{option: OptionParams; handleOptionSelection: (option: OptionParams) => void;}> = ({ option, handleOptionSelection }) => {
     
     const { active, support, icon, value } = option;
     
@@ -11,14 +12,12 @@ const OptionElement = ({ option, handleOptionSelection }) => {
         active ? OptionElementStates.ACTIVE : OptionElementStates.DISABLED,
         support ? OptionElementStates.SUPPORT : OptionElementStates.REGULAR
     )
-    
-    
 
     return (
         <div
             tabIndex={0}
             className={optionElementClassName}
-            onClick={() => { handleOptionSelection(option); }}
+            onClick={() => handleOptionSelection(option)}
             onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                     handleOptionSelection(option);
@@ -26,9 +25,9 @@ const OptionElement = ({ option, handleOptionSelection }) => {
             }}
         >
             <div className={"option__content"}>
-                {icon !== undefined && icon.align === "left" && <img className="option__icon" src={icon.url} alt={icon.alt} />}
+                {icon !== undefined && icon.align === IconAlign.LEFT && <img className="option__icon" src={icon.url} alt={icon.alt} />}
                 {value && value}
-                {icon !== undefined && icon.align === "right" && <img className="option__icon" src={icon.url} alt={icon.alt} />}
+                {icon !== undefined && icon.align === IconAlign.RIGHT && <img className="option__icon" src={icon.url} alt={icon.alt} />}
             </div>
         </div>
     );

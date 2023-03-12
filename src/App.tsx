@@ -1,15 +1,21 @@
 import buttonOptions from "./buttonOptions";
 import ButtonWrapper from "./components/ButtonWrapper";
+import { ColorScheme } from './enum'
 import React from "react";
 
 const App = () => {
 
-  const [ colorScheme, setColorScheme ] = React.useState("telia");
-  const [ selectedItem, setSelectedItem ] = React.useState("");
+  const [ colorScheme, setColorScheme ] = React.useState<ColorScheme>(ColorScheme.TELIA);
+  const [ selectedItem, setSelectedItem ] = React.useState<string | undefined>("");
 
-  const changeColor = (event) => {
-    const scheme = event.target.attributes.getNamedItem('data-value').value;
-    setColorScheme(scheme);
+  const changeColor = (target: EventTarget) => {
+    const element = target as HTMLImageElement;
+    console.log(element)
+    const value = element.attributes.getNamedItem('data-value');
+    if (!value) return;
+
+    const scheme = value.value;
+    setColorScheme(scheme as ColorScheme);
   }
 
   return (
@@ -17,32 +23,42 @@ const App = () => {
       <h1>Telia Arendaja - Prooviülesanne</h1>
       <h2>Select color scheme if needed. Current scheme applied: {colorScheme}</h2>
       <img
-        src={"./img/logos/teliaLogo.png"} onClick={changeColor} data-value="telia" tabIndex='0' alt="Telia brand logo"
+        src={"./img/logos/teliaLogo.png"} 
+        onClick={(e) => changeColor(e.target)} 
+        data-value={ColorScheme.TELIA} 
+        tabIndex={0} 
+        alt="Telia brand logo"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") { changeColor(e.target) }
+        }} />
+      <img
+        src={"./img/logos/teliaWCAGLogo.png"} 
+        onClick={(e) => changeColor(e.target)} 
+        data-value={ColorScheme.TELIA_WCAG} 
+        tabIndex={0} 
+        alt="Telia brand logo with WCAG sticker on it"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") { changeColor(e.target) }
+        }} />
+      <img
+        src={"./img/logos/elisaLogo.png"} 
+        onClick={(e) => changeColor(e.target)} 
+        data-value={ColorScheme.ELISA} 
+        tabIndex={0} 
+        alt="Elisa brand logo"
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
-            changeColor(e)
+            changeColor(e.target)
           }
         }} />
       <img
-        src={"./img/logos/teliaWCAGLogo.png"} onClick={changeColor} data-value="teliaWCAG" tabIndex='0' alt="Telia brand logo with WCAG sticker on it"
+        src={"./img/logos/tele2Logo.png"} 
+        onClick={(e) => changeColor(e.target)} 
+        data-value={ColorScheme.TELE2} 
+        tabIndex={0} 
+        alt="Tele2 brand logo"
         onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            changeColor(e)
-          }
-        }} />
-      <img
-        src={"./img/logos/elisaLogo.png"} onClick={changeColor} data-value="elisa" tabIndex='0' alt="Elisa brand logo"
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            changeColor(e)
-          }
-        }} />
-      <img
-        src={"./img/logos/tele2Logo.png"} onClick={changeColor} data-value="tele2" tabIndex='0' alt="Tele2 brand logo"
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            changeColor(e)
-          }
+          if (e.key === "Enter" || e.key === " ") { changeColor(e.target) }
         }} />
 
       <h3>Selected list option: {selectedItem}</h3>

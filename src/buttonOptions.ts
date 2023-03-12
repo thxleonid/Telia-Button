@@ -1,4 +1,7 @@
-const buttonOptions = [
+import { OptionParams } from './types'
+import { IconAlign } from './enum'
+
+const buttonOptions: OptionParams[] = [
     {
       value: "First option",
       active: true,
@@ -24,7 +27,7 @@ const buttonOptions = [
       active: true,
       support: false,
       icon: {
-        align: "left",
+        align: IconAlign.LEFT,
         url: "./img/icon.png",
         alt: "weather icon"
       }
@@ -34,14 +37,14 @@ const buttonOptions = [
       active: true,
       support: false,
       icon: {
-        align: "right",
+        align: IconAlign.RIGHT,
         url: "./img/icon.png",
         alt: "weather icon"
       }
     },
     {
       icon: {
-        align: "right",
+        align: IconAlign.RIGHT,
         url: "./img/icon.png",
         alt: "weather icon"
       }

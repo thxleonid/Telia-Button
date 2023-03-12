@@ -1,33 +1,38 @@
-import OptionsList from "./OptionsList";
-import React from "react";
+import classNames from 'classnames'
+import { ColorScheme, ButtonStates } from '../enum'
+import OptionsList from './OptionsList'
+import { OptionParams } from '../types'
+import React, { FocusEvent, Dispatch, SetStateAction } from 'react'
 
 const margin = 10;
 
-const CustomButton = ({ options, colorScheme, active, text, setSelectedItem }) => {
-  const listPointer = React.useRef(null);
-  const buttonPointer = React.useRef(null);
+const CustomButton:
+  React.FunctionComponent<{options: OptionParams[]; colorScheme: ColorScheme; active: boolean; text: string; setSelectedItem: Dispatch<SetStateAction<string|undefined>>}> = ({ options, colorScheme, active, text, setSelectedItem }) => {
+  
+  const listPointer = React.useRef<HTMLDivElement>(null);
+  const buttonPointer = React.useRef<HTMLButtonElement>(null);
 
   const [ dropdownOpen, setDropdownOpen ] = React.useState(false);
   const [ optionsListStyle, setOptionsListStyle ] = React.useState({});
 
   const positionList = () => {
-    if (!listPointer.current) return;
+    if (!listPointer.current || !buttonPointer.current) return;
 
-    let button = buttonPointer.current.getBoundingClientRect();
-    let list = listPointer.current.getBoundingClientRect();
+    const button = buttonPointer.current.getBoundingClientRect();
+    const list = listPointer.current.getBoundingClientRect();
 
     // x axis list location
-    let availableSpaceRight = window.innerWidth - button.left;
-    let listWidth = list.width;
-    let leftCoord = listWidth - availableSpaceRight + margin;
+    const availableSpaceRight = window.innerWidth - button.left;
+    const listWidth = list.width;
+    const leftCoord = listWidth - availableSpaceRight + margin;
 
     //y axis list location
-    let buttonHeight = button.height;
-    let listHeight = list.height;
-    let availableSpaceBottom = window.innerHeight - button.bottom - margin;
+    const buttonHeight = button.height;
+    const listHeight = list.height;
+    const availableSpaceBottom = window.innerHeight - button.bottom - margin;
 
     if (availableSpaceBottom < listHeight) {
-      let availableSpaceTop = button.top - margin;
+      const availableSpaceTop = button.top - margin;
       if (availableSpaceTop > list.height) {
         setOptionsListStyle({ bottom: buttonHeight });
       } else {
@@ -42,9 +47,9 @@ const CustomButton = ({ options, colorScheme, active, text, setSelectedItem }) =
     })
   }
 
-  const handleBlur = (event) => {
+  const handleBlur = (event: FocusEvent<HTMLButtonElement>) => {
     if (!listPointer.current) return;
-
+    
     if (!listPointer.current.contains(event.relatedTarget) || event.relatedTarget === null ||
         (event.relatedTarget == buttonPointer.current && dropdownOpen)) {
       setDropdownOpen(false);
@@ -52,15 +57,15 @@ const CustomButton = ({ options, colorScheme, active, text, setSelectedItem }) =
   }
 
   const handleButtonClick = () => {
-    !dropdownOpen && buttonPointer.current.focus();
+    (!dropdownOpen && buttonPointer.current) && buttonPointer.current.focus();
     active && setDropdownOpen(x => !x);
   }
 
-  const handleOptionSelection = (option) => {
+  const handleOptionSelection = (option: OptionParams) => {
     if (option.active) {
       setDropdownOpen(false);
       setSelectedItem(option.value);
-    } else buttonPointer.current.focus();
+    } else buttonPointer.current && buttonPointer.current.focus();
   }
 
   React.useEffect(positionList, [ dropdownOpen ]);
@@ -75,15 +80,18 @@ const CustomButton = ({ options, colorScheme, active, text, setSelectedItem }) =
   }, []);
   //window resizing 
 
+  const buttonElementClassName = classNames([
+    'btn',
+    dropdownOpen && ButtonStates.DROPDOWN_OPEN,
+    active ? ButtonStates.ENABLED : ButtonStates.DISABLED
+  ])
+
   return (
     <div className={`wrapper ${colorScheme}`}>
       <button
         onBlur={handleBlur}
         onMouseDown={(e) => e.preventDefault()}
-        className={['btn',
-                  dropdownOpen && "btn--dropdown-open",
-                  active ? "btn--enabled" : "btn--disabled"]
-                  .filter(Boolean).join(' ')}
+        className={buttonElementClassName}
         ref={buttonPointer}
         onClick={handleButtonClick}
       >
