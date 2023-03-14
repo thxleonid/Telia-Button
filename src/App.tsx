@@ -10,7 +10,7 @@ const App = () => {
 
   const changeColor = (target: EventTarget) => {
     const element = target as HTMLImageElement;
-    console.log(element)
+    
     const value = element.attributes.getNamedItem('data-value');
     if (!value) return;
 

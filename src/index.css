@@ -85,11 +85,10 @@ code {
   cursor: pointer;
 }
 
+/*
 .btn--disabled {
   cursor: not-allowed;
-}
-
-
+}*/
 
 .btn--dropdown-open .btn__icon {
   margin-left: 10px;
