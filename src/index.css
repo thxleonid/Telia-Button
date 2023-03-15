@@ -2,11 +2,11 @@
 
 @media screen and (max-height: 440px),
        screen and  (max-width: 440px) {
-  .multipleButtonsBlock-bottomRow {display:none;}
+  .multipleButtonsBlock-bottomRow {display: none;}
 }
 
 @media screen and (min-height: 440px) and (min-width: 440px) {
-  .multipleButtonsBlock-bottomRow {display:flex;}
+  .multipleButtonsBlock-bottomRow {display: flex;}
 }
 
 body {
@@ -41,17 +41,20 @@ code {
 
 
 .multipleButtonsBlock-topRow {
-  display:flex;
-  flex-wrap:wrap;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  padding: 10px;
 }
 
 .multipleButtonsBlock-bottomRow {
   bottom: 10px;
   position: absolute;
 
+  flex-wrap: wrap;
   justify-content: space-between;
   width:95%;
+  padding: 10px;
 }
 
 /* MAIN dropdown styling */
@@ -66,7 +69,8 @@ code {
 .btn {  
   padding: 15px 30px 15px 30px;
   border: none;
-  width: 250px;
+  min-width: 250px;
+  max-width: 380px;
 
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
@@ -275,13 +279,12 @@ code {
   letter-spacing: .03rem;
   font-weight: 400;
   text-align: left;
-  
-  
 }  
 
 .option__content {
   padding: 9px 10px;
   display: flex;
+  align-items: center;
   gap: 5px;
 }
 
