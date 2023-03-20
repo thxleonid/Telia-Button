@@ -1,19 +1,24 @@
 import classNames from 'classnames'
-import { ColorScheme, ButtonStates } from '../enum'
+import { ButtonStates } from '../enum'
 import OptionsList from './OptionsList'
-import { OptionParams } from '../types'
-import React, { FocusEvent, Dispatch, SetStateAction } from 'react'
+import { OptionParams, ButtonProps } from '../types'
+import { useState, useRef, FocusEvent, useEffect } from 'react'
+
+import {useFloating} from '@floating-ui/react';
 
 const margin = 10;
 
 const CustomButton:
-  React.FunctionComponent<{options: OptionParams[]; colorScheme: ColorScheme; active: boolean; text: string; setSelectedItem: Dispatch<SetStateAction<string|undefined>>}> = ({ options, colorScheme, active, text, setSelectedItem }) => {
+  React.FC<ButtonProps> = ({ options, colorScheme, disabled, text, setSelectedItem }) => {
   
-  const listPointer = React.useRef<HTMLDivElement>(null);
-  const buttonPointer = React.useRef<HTMLButtonElement>(null);
+  const listPointer = useRef<HTMLDivElement>(null);
+  const buttonPointer = useRef<HTMLButtonElement>(null);
 
-  const [ dropdownOpen, setDropdownOpen ] = React.useState(false);
-  const [ optionsListStyle, setOptionsListStyle ] = React.useState({});
+  const [ dropdownOpen, setDropdownOpen ] = useState(false);
+  const [ optionsListStyle, setOptionsListStyle ] = useState({});
+
+  
+
 
   const positionList = () => {
     if (!listPointer.current || !buttonPointer.current) return;
@@ -58,7 +63,7 @@ const CustomButton:
 
   const handleButtonClick = () => {
     (!dropdownOpen && buttonPointer.current) && buttonPointer.current.focus();
-    active && setDropdownOpen(x => !x);
+    !disabled && setDropdownOpen(x => !x);
   }
 
   const handleOptionSelection = (option: OptionParams) => {
@@ -68,10 +73,10 @@ const CustomButton:
     } else buttonPointer.current && buttonPointer.current.focus();
   }
 
-  React.useEffect(positionList, [ dropdownOpen ]);
+  useEffect(positionList, [ dropdownOpen ]);
 
   //window resizing 
-  React.useEffect(() => {
+  useEffect(() => {
     const updateWindowDimensions = () => {
       positionList();
     };
@@ -80,20 +85,19 @@ const CustomButton:
   }, []);
   //window resizing 
 
-  const buttonElementClassName = classNames([
-    'btn',
-    dropdownOpen && ButtonStates.DROPDOWN_OPEN,
-    active ? ButtonStates.ENABLED : ButtonStates.DISABLED
-  ])
-
   return (
     <div className={`wrapper ${colorScheme}`}>
       <button
         onBlur={handleBlur}
         onMouseDown={(e) => e.preventDefault()}
-        className={buttonElementClassName}
+        className={classNames([
+          'btn',
+          dropdownOpen && ButtonStates.DROPDOWN_OPEN,
+          disabled ? ButtonStates.DISABLED : ButtonStates.ENABLED
+        ])}
         ref={buttonPointer}
         onClick={handleButtonClick}
+        disabled={disabled}
       >
       {text}<img src={"./img/arrow.png"} className="btn__icon" alt="Icon of arrow pointing right" /></button>
       {dropdownOpen &&
