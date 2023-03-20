@@ -3,14 +3,7 @@ import { ButtonStates } from '../enum'
 import OptionsList from './OptionsList'
 import { OptionParams, ButtonProps } from '../types'
 import { useState, FocusEvent } from 'react'
-
-import {
-  useFloating,
-  offset,
-  flip,
-  size,
-  autoUpdate
-} from "@floating-ui/react";
+import { useFloating, offset, flip, size, autoUpdate } from "@floating-ui/react"
 
 const CustomButton:
   React.FC<ButtonProps> = ({ options, colorScheme, disabled, text, setSelectedItem }) => {
