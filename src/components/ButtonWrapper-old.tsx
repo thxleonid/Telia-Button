@@ -39,7 +39,7 @@ const CustomButton:
   }
 
   const handleButtonClick = () => {
-    (!dropdownOpen && refs.reference.current) && (refs.reference.current as HTMLElement).focus(); // refs.reference.current.focus();
+    (!dropdownOpen && refs.reference.current) && (refs.reference.current as HTMLElement).focus(); 
     !disabled && setDropdownOpen(x => !x);
   }
 

@@ -1,0 +1,33 @@
+{ 
+    "extends": ["stylelint-config-standard"],
+    "plugins": [
+        "stylelint-selector-bem-pattern"
+    ],
+    "rules": {
+      "declaration-empty-line-before": ["always", {
+          "except": ["first-nested"],
+          "ignore": ["after-comment", "after-declaration"]
+      }],
+      "no-descending-specificity": null,
+      "block-opening-brace-space-before": "always",
+      "no-eol-whitespace": true,
+      "selector-class-pattern": null,
+      "color-function-notation": "legacy",
+      "alpha-value-notation": "number",
+      "plugin/selector-bem-pattern": {
+        "implicitComponents": "projects/test/src/lib/**/*.scss",
+        "componentSelectors": {
+          "initial": "^.test-([-?a-z]|[\\-\\-?a-z])+"
+        },
+        "ignoreSelectors" : [
+          "^.+:last-child"
+        ],
+        "ignoreCustomProperties": [
+          "^\\-\\-[-?a-z]"
+        ]
+      }
+    },
+    "ignoreFiles": [
+        "./build/static/**/*.*"
+    ]
+}
