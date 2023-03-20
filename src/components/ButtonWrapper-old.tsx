@@ -2,67 +2,51 @@ import classNames from 'classnames'
 import { ButtonStates } from '../enum'
 import OptionsList from './OptionsList'
 import { OptionParams, ButtonProps } from '../types'
-import { useState, useRef, FocusEvent, useEffect } from 'react'
+import { useState, FocusEvent } from 'react'
 
-import {useFloating} from '@floating-ui/react';
-
-const margin = 10;
+import {
+  useFloating,
+  offset,
+  flip,
+  size,
+  autoUpdate
+} from "@floating-ui/react";
 
 const CustomButton:
   React.FC<ButtonProps> = ({ options, colorScheme, disabled, text, setSelectedItem }) => {
-  
-  const listPointer = useRef<HTMLDivElement>(null);
-  const buttonPointer = useRef<HTMLButtonElement>(null);
 
   const [ dropdownOpen, setDropdownOpen ] = useState(false);
-  const [ optionsListStyle, setOptionsListStyle ] = useState({});
 
-  
-
-
-  const positionList = () => {
-    if (!listPointer.current || !buttonPointer.current) return;
-
-    const button = buttonPointer.current.getBoundingClientRect();
-    const list = listPointer.current.getBoundingClientRect();
-
-    // x axis list location
-    const availableSpaceRight = window.innerWidth - button.left;
-    const listWidth = list.width;
-    const leftCoord = listWidth - availableSpaceRight + margin;
-
-    //y axis list location
-    const buttonHeight = button.height;
-    const listHeight = list.height;
-    const availableSpaceBottom = window.innerHeight - button.bottom - margin;
-
-    if (availableSpaceBottom < listHeight) {
-      const availableSpaceTop = button.top - margin;
-      if (availableSpaceTop > list.height) {
-        setOptionsListStyle({ bottom: buttonHeight });
-      } else {
-        if (availableSpaceTop > availableSpaceBottom) {
-          setOptionsListStyle({ bottom: buttonHeight, maxHeight: availableSpaceTop });
-        } else setOptionsListStyle({ height: availableSpaceBottom });
-      }
-    } else { setOptionsListStyle({}); }
-
-    setOptionsListStyle(x => {
-      return { ...x, left: leftCoord > 0 ? -leftCoord : 0 };
-    })
-  }
+  const { x, y, strategy, refs } = useFloating({
+    placement: "bottom-start",
+    open: dropdownOpen,
+    onOpenChange: setDropdownOpen,
+    whileElementsMounted: autoUpdate,
+    middleware: [
+      offset(0),
+      flip({ padding: 10 }),
+      size({
+        apply({ elements, availableHeight }) {
+          Object.assign(elements.floating.style, {
+            maxHeight: `${availableHeight}px`
+          });
+        },
+        padding: 10
+      })
+    ]
+  });
 
   const handleBlur = (event: FocusEvent<HTMLButtonElement>) => {
-    if (!listPointer.current) return;
+    if (!refs.floating.current) return;
     
-    if (!listPointer.current.contains(event.relatedTarget) || event.relatedTarget === null ||
-        (event.relatedTarget == buttonPointer.current && dropdownOpen)) {
+    if (!refs.floating.current.contains(event.relatedTarget) || event.relatedTarget === null ||
+        (event.relatedTarget == refs.reference.current && dropdownOpen)) {
       setDropdownOpen(false);
     }
   }
 
   const handleButtonClick = () => {
-    (!dropdownOpen && buttonPointer.current) && buttonPointer.current.focus();
+    (!dropdownOpen && refs.reference.current) && (refs.reference.current as HTMLElement).focus(); // refs.reference.current.focus();
     !disabled && setDropdownOpen(x => !x);
   }
 
@@ -70,20 +54,8 @@ const CustomButton:
     if (option.active) {
       setDropdownOpen(false);
       setSelectedItem(option.value);
-    } else buttonPointer.current && buttonPointer.current.focus();
+    } else refs.reference.current && (refs.reference.current as HTMLElement).focus();
   }
-
-  useEffect(positionList, [ dropdownOpen ]);
-
-  //window resizing 
-  useEffect(() => {
-    const updateWindowDimensions = () => {
-      positionList();
-    };
-    window.addEventListener("resize", updateWindowDimensions);
-    return () => window.removeEventListener("resize", updateWindowDimensions);
-  }, []);
-  //window resizing 
 
   return (
     <div className={`wrapper ${colorScheme}`}>
@@ -95,13 +67,18 @@ const CustomButton:
           dropdownOpen && ButtonStates.DROPDOWN_OPEN,
           disabled ? ButtonStates.DISABLED : ButtonStates.ENABLED
         ])}
-        ref={buttonPointer}
+        ref={refs.setReference}
         onClick={handleButtonClick}
         disabled={disabled}
       >
       {text}<img src={"./img/arrow.png"} className="btn__icon" alt="Icon of arrow pointing right" /></button>
       {dropdownOpen &&
-        <div className="dropdown" style={optionsListStyle} ref={listPointer} >
+        <div className="dropdown" ref={refs.setFloating} style={{
+          position: strategy,
+          top: y ?? 0,
+          left: x ?? 0,
+          overflowY: "auto"
+        }}>
           <OptionsList
             options={options}
             handleOptionSelection={handleOptionSelection}
