@@ -2,9 +2,13 @@ import classNames from 'classnames'
 import { OptionElementStates, IconAlign } from '../enum'
 import { OptionParams } from '../types'
 
-const OptionElement: 
-    React.FC<{option: OptionParams; handleOptionSelection: (option: OptionParams) => void;}> = ({ option, handleOptionSelection }) => {
-    
+interface IOptionElementProps {
+    option: OptionParams; 
+    handleOptionSelection: (option: OptionParams) => void;
+}
+
+const OptionElement = (props: IOptionElementProps): JSX.Element => {
+    const { option, handleOptionSelection } = props;
     const { active, support, icon, value } = option;
 
     return (
@@ -23,9 +27,9 @@ const OptionElement:
             )}
         >
             <div className={"option__content"}>
-                {icon !== undefined && icon.align === IconAlign.LEFT && <img className="option__icon" src={icon.url} alt={icon.alt} />}
+                {icon && icon.align === IconAlign.LEFT && <img className="option__icon" src={icon.url} alt={icon.alt} />}
                 {value && value}
-                {icon !== undefined && icon.align === IconAlign.RIGHT && <img className="option__icon" src={icon.url} alt={icon.alt} />}
+                {icon && icon.align === IconAlign.RIGHT && <img className="option__icon" src={icon.url} alt={icon.alt} />}
             </div>
         </div>
     );

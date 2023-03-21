@@ -1,5 +1,4 @@
-import { IconAlign, ColorScheme } from './enum'
-import { Dispatch, SetStateAction } from 'react'
+import { IconAlign } from './enum'
 
 export type OptionParams = {
     value?: string;
@@ -11,12 +10,3 @@ export type OptionParams = {
         alt: string
     }
   }
-
-  export type ButtonProps = {
-    options: OptionParams[]; 
-    colorScheme: ColorScheme; 
-    disabled?: boolean; 
-    text: string; 
-    setSelectedItem: Dispatch<SetStateAction<string|undefined>>
-  }
-  

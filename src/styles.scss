@@ -1,0 +1,299 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+
+$button-text: #F6F6F6;
+$dropdown-background: #F6F6F6;
+$option-background: white;
+$option-background--hover: #F6F6F6;
+$font-family_open-sans: 'Open Sans', sans-serif;
+
+// telia theme
+$telia-button-background__enabled: #8A1FD8;
+$telia-button-background__disabled: $telia-button-background__enabled;
+$telia-button-background__open: #6F17AC;
+$telia-option-text__disabled: #B5B5B5;
+$telia-option-text__active: black;
+$telia-option-text__active--hover: #932DDD;
+$telia-option-text__support: #CE68C5;
+$telia-option-text__support--hover: #EB56D0;
+
+// teliaWCAG theme
+$teliaWCAG-button-background__enabled: #8A1FD8;
+$teliaWCAG-button-background__disabled: #7f6f8b;
+$teliaWCAG-button-background__open: #6F17AC;
+$teliaWCAG-option-text__disabled: #706b6b;
+$teliaWCAG-option-text__active: $telia-option-text__active;
+$teliaWCAG-option-text__active--hover: $telia-option-text__active--hover;
+$teliaWCAG-option-text__support: #b54aac;
+$teliaWCAG-option-text__support--hover: #7C0E66;
+
+// elisa theme
+$elisa-button-background__enabled: #0618A8;
+$elisa-button-background__disabled: #667685;
+$elisa-button-background__open: #04127c;
+$elisa-option-text__disabled: #6B6B6B;
+$elisa-option-text__active: black;
+$elisa-option-text__active--hover: #2b94cd;
+$elisa-option-text__support: #BC4910;
+$elisa-option-text__support--hover: #83340C;
+
+// tele2 theme
+$tele2-button-background__enabled: #2D3139;
+$tele2-button-background__disabled: #6d737e;
+$tele2-button-background__open: #191c20;
+$tele2-option-text__disabled: #6B6B6B; 
+$tele2-option-text__active: black;
+$tele2-option-text__active--hover: #2b94cd;
+$tele2-option-text__support: #C81967;
+$tele2-option-text__support--hover: #6b2d49;
+
+body {
+	height: 100vh;
+	padding: 10px;
+	box-sizing: border-box;
+	margin: 0;
+	background: #f0efef;
+	font-family: $font-family_open-sans;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+#root {
+	height: 100%;
+}
+.style_icons > img {
+	width: 50px;
+	height: 50px;
+	object-fit: cover;
+	margin: 5px;
+}
+.btn__icon {
+	height: 16px;
+	margin-left: 0;
+	margin-right: 10px;
+	transition: margin 100ms;
+}
+.App {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.buttons-block {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: space-between;
+}
+.top-row {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 10px;
+}
+.bottom-row {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	bottom: 10px;
+	width: 95%;
+	padding: 10px;
+}
+.wrapper {
+	position: relative;
+	margin: 10px;
+}
+.btn {
+	padding: 15px 30px;
+	border: none;
+	min-width: 250px;
+	max-width: 380px;
+	font-weight: 500;
+	letter-spacing: .03rem;
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	color: $button-text;
+}
+.btn--enabled {
+	cursor: pointer;
+	&:hover {
+		.btn__icon {
+			margin-left: 10px;
+			margin-right: 0;
+			transition: margin 100ms;
+		}
+	}
+}
+.btn--dropdown-open {
+	.btn__icon {
+		margin-left: 10px;
+		margin-right: 0;
+	}
+}
+.telia {
+	.btn {
+		border-radius: 24px;
+	}
+	.btn--disabled {
+		background: $telia-button-background__disabled;
+		opacity: 0.4;
+	}
+	.btn--enabled {
+		background: $telia-button-background__enabled;
+	}
+	.btn--dropdown-open {
+		background: $telia-button-background__open;
+	}
+	.option--disabled {
+		color: $telia-option-text__disabled;
+	}
+	.option--active.option--regular {
+		color: $telia-option-text__active;
+		&:hover {
+			color: $telia-option-text__active--hover;
+		}
+	}
+	.option--active.option--support {
+		color: $telia-option-text__support;
+		&:hover {
+			color: $telia-option-text__support--hover;
+		}
+	}
+}
+.teliaWCAG {
+	.btn {
+		border-radius: 24px;
+	}
+	.btn--disabled {
+		background-color: $teliaWCAG-button-background__disabled;
+	}
+	.btn--enabled {
+		background-color: $teliaWCAG-button-background__enabled;
+	}
+	.btn--dropdown-open {
+		background: $teliaWCAG-button-background__open;
+	}
+	.option--disabled {
+		color: $teliaWCAG-option-text__disabled;
+	}
+	.option--active.option--regular {
+		color: $teliaWCAG-option-text__active;
+		&:hover {
+			color: $teliaWCAG-option-text__active--hover;
+		}
+	}
+	.option--active.option--support {
+		color: $teliaWCAG-option-text__support;
+		&:hover {
+			color: $teliaWCAG-option-text__support--hover;
+		}
+	}
+}
+.elisa {
+	.btn--disabled {
+		background-color: $elisa-button-background__disabled;
+	}
+	.btn--enabled {
+		background-color: $elisa-button-background__enabled;
+	}
+	.btn--dropdown-open {
+		background: $elisa-button-background__open;
+	}
+	.option--disabled {
+		color: $elisa-option-text__disabled;
+	}
+	.option--active.option--regular {
+		color: $elisa-option-text__active;
+		&:hover {
+			color: $elisa-option-text__active--hover;
+		}
+	}
+	.option--active.option--support {
+		color: $elisa-option-text__support;
+		&:hover {
+			color: $elisa-option-text__support--hover;
+		}
+	}
+}
+.tele2 {
+	.btn--disabled {
+		background-color: $tele2-button-background__disabled;
+	}
+	.btn--enabled {
+		background-color: $tele2-button-background__enabled;
+	}
+	.btn--dropdown-open {
+		background: $tele2-button-background__open;
+	}
+	.option--disabled {
+		color: $tele2-option-text__disabled;
+	}
+	.option--active.option--regular {
+		color: $tele2-option-text__active;
+		&:hover {
+			color: $tele2-option-text__active--hover;
+		}
+	}
+	.option--active.option--support {
+		color: $tele2-option-text__support;
+		&:hover {
+			color: $tele2-option-text__support--hover;
+		}
+	}
+}
+.dropdown {
+	display: block;
+	position: absolute;
+	min-width: 320px;
+	max-height: 400px;
+	overflow-y: scroll;
+	background-color: $dropdown-background;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	z-index: 1;
+}
+.option {
+	background-color: $option-background;
+	padding: 0 16px;
+	font-size: 13px;
+	letter-spacing: .03rem;
+	font-weight: 400;
+	text-align: left;
+	&:not(:first-child) >.option__content {
+		border-top: 1px solid #F6F6F6;
+	}
+	
+	&:first-child {
+		> .option__content {
+			padding: 10px;
+		}
+	}
+}
+.option__content {
+	padding: 9px 10px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+.option--active {
+	&:hover {
+		+ {
+			.option {
+				.option__content {
+					border-top: 1px solid white;
+				}
+			}
+		}
+		background-color: $option-background--hover;
+		cursor: pointer;
+	}
+}
+.option--disabled {
+	&:hover {
+		cursor: not-allowed;
+	}
+}
+.option__icon {
+	height: 13px;
+	object-fit: cover;
+}

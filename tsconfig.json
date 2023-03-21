@@ -17,6 +17,6 @@
       "noEmit": true,
       "jsx": "react-jsx"
     },
-    "include": ["src", "**/*.ts", "**/*.tsx"],
+    "include": ["src", "**/*.ts", "**/*.tsx", "*.tsx", "tests/ButtonWrapper.test.js"],
     "exclude": ["node_modules"]
   }

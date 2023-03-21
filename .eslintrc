@@ -12,10 +12,12 @@
     "extends": [
       "eslint:recommended",
       "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "next"
     ],
     "rules": {
         "react/prop-types": "off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "@next/next/no-img-element": "off"
     }
   }

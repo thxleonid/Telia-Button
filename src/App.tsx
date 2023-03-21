@@ -1,5 +1,5 @@
-import buttonOptions from "./buttonOptions";
-import ButtonWrapper from "./components/ButtonWrapper-old";
+import buttonOptions from "./buttonOptions"
+import ButtonWrapper from "./components/ButtonWrapper"
 import { ColorScheme } from './enum'
 
 import React from "react";
@@ -23,7 +23,7 @@ const App = () => {
     <div className="App">
       <h1>Telia Arendaja - Prooviülesanne</h1>
       <h2>Select color scheme if needed. Current scheme applied: {colorScheme}</h2>
-      <div className="images">
+      <div className="style_icons">
         <img
           src={"./img/logos/teliaLogo.png"} 
           onClick={(e) => changeColor(e.target)} 
@@ -64,7 +64,7 @@ const App = () => {
           }} />
       </div>
 
-      <h3>Selected list option: {selectedItem}</h3>
+      <h3 className='output'>Selected list option: {selectedItem}</h3>
       <hr />
       <div className="buttons-block">
         <div className="top-row">
@@ -84,7 +84,7 @@ const App = () => {
           />
 
           <ButtonWrapper
-            text={"Erinevad toimingud"}
+            text={"Erinevad toimingud 2"}
             options={buttonOptions}
             colorScheme={colorScheme}
             setSelectedItem={setSelectedItem}
