@@ -34,11 +34,10 @@ const CustomButton: React.FC<IButtonProps> = (props) => {
     ]
   });
 
-  const handleBlur = (event: FocusEvent<HTMLButtonElement>) => {
+  const handleBlur = (event: FocusEvent<HTMLDivElement|HTMLButtonElement>) => {
     if (!refs.floating.current) return;
-    
-    if (!refs.floating.current.contains(event.relatedTarget) || event.relatedTarget === null ||
-        (event.relatedTarget == refs.reference.current && dropdownOpen)) {
+
+    if (!refs.floating.current.contains(event.relatedTarget) || event.relatedTarget === null) {
       setDropdownOpen(false);
     }
   }
@@ -52,7 +51,7 @@ const CustomButton: React.FC<IButtonProps> = (props) => {
     if (option.active) {
       setDropdownOpen(false);
       setSelectedItem(option.value);
-    } else refs.reference.current && (refs.reference.current as HTMLElement).focus();
+    } 
   }
 
   return (
@@ -79,6 +78,7 @@ const CustomButton: React.FC<IButtonProps> = (props) => {
           <OptionsList
             options={options}
             handleOptionSelection={handleOptionSelection}
+            handleBlur={handleBlur}
           />
         </div>
       }

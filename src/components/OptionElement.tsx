@@ -5,10 +5,11 @@ import { OptionParams } from '../types'
 interface IOptionElementProps {
     option: OptionParams; 
     handleOptionSelection: (option: OptionParams) => void;
+    handleBlur: (event: React.FocusEvent<HTMLDivElement|HTMLButtonElement>) => void;
 }
 
 const OptionElement = (props: IOptionElementProps): JSX.Element => {
-    const { option, handleOptionSelection } = props;
+    const { option, handleOptionSelection, handleBlur } = props;
     const { active, support, icon, value } = option;
 
     return (
@@ -20,6 +21,7 @@ const OptionElement = (props: IOptionElementProps): JSX.Element => {
                     handleOptionSelection(option);
                 }
             }}
+            onBlur={handleBlur}
             className={classNames(
                 'option',
                 active ? OptionElementStates.ACTIVE : OptionElementStates.DISABLED,
