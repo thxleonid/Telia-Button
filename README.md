@@ -1,6 +1,6 @@
 # Telia button
 
-This is a simple button with a dropdown, which items are dynamically passed into Button component. App is built using React TS.
+This is a simple button with a dropdown, which items are dynamically passed into Button component. App is built using React TS and SCSS.
 
 Main features include:
 - rendering items based on provided attributes of each item
